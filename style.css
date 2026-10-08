@@ -8,7 +8,7 @@ html {
 
 body {
   background-color: #F7F3E6;
-  margin: 0px;
+  margin: 0;
   padding: 61px 10px 0px 10px;
   display: flex;
   align-items: center;
@@ -32,7 +32,7 @@ body {
   position: absolute;
   border-bottom: none;
   top:0px;
-  width: calc(100% - 40px);
+  width: calc(100% - 20px);
   left: 0;
   right: 0;
   padding: 0 10px 0 10px;
@@ -44,10 +44,17 @@ align-items: center;
 justify-content: left;
 padding: 0;
 margin: 0;
-height: 100%;
+height: 61px;
 width: 190px;
 border-right: 2px solid rgba(54, 69, 79, 0.3);
 box-sizing: border-box;
+background-image: url("css/main\-page\-svgs/pexels-elina-araja-1743227-5642762.jpg");
+background-size: 300px;
+background-repeat: repeat;
+position: fixed;
+top: 0;
+left: 10px;
+z-index: 5;
 }
 
 
@@ -57,6 +64,14 @@ box-sizing: border-box;
   justify-content: center;
   flex: 1;
   height: 80px;
+}
+
+.hamburger-menu + .day-section {
+  padding-left: 205px;
+}
+
+.hamburger-menu.collapsed + .day-section {
+  padding-left: 15px;
 }
 
 .list-title {
@@ -85,8 +100,13 @@ color: #F7F3E6;
   flex-direction: row;
 }
 
-.side-container.hidden {
-  display: none;
+.side-container {
+  width: 190px;
+  flex-shrink: 0;
+}
+
+.side-container.collapsed {
+  width: 0;
 }
 
 .side-section {
@@ -100,14 +120,29 @@ color: #F7F3E6;
 }
 
 .side-menu {
-  width : 190px;
-  height: 100%;
+  width: 190px;
+  height: calc(100vh - 61px);
+  position: fixed;
+  top: 61px;
+  left: 10px;
+  z-index: 5;
+  overflow-y: auto;
   padding: 20px 15px 0 0;
   box-sizing: border-box;
   border-right: 2px solid rgba(54, 69, 79, 0.3);
   flex-direction: column;
+  background-image: url("css/main\-page\-svgs/pexels-elina-araja-1743227-5642762.jpg");
+  background-size: 300px;
+  background-repeat: repeat;
+  background-attachment: fixed;
+  gap: 10px;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
 }
 
+.side-menu::-webkit-scrollbar {
+  display: none;
+}
 
 .tasks-section {
   flex: 1;
@@ -349,7 +384,7 @@ color: #F7F3E6;
 }
 
 .lists-container {
-  min-height: 370px;
+  min-height: 0;
   padding-left: 15px;
   position: relative;
   overflow: hidden;
@@ -412,8 +447,9 @@ color: #F7F3E6;
 }
 
 .coffee-section {
-  min-height: 50px;
-  align-items: center;
+  margin-top: auto;
+  padding-bottom: 20px;
+  padding-left: 5px;
 }
 
 .coffee-buy {
@@ -476,6 +512,9 @@ color: #F7F3E6;
   height: 100%;
   width: 60px;
   position: relative;
+  background-image: url("css/main\-page\-svgs/pexels-elina-araja-1743227-5642762.jpg");
+  background-size: 300px;
+  background-repeat: repeat;
 }
 
 .coffee-col-container {
@@ -674,4 +713,101 @@ transition: background-color 300ms ease;
 .copyright {
   margin-top: 55px;
   font-size: 11px;
+}
+
+@media (max-width: 800px) {
+
+  .side-container {
+  width: 0;
+  }
+
+  .hamburger-menu + .day-section,
+  .hamburger-menu.collapsed + .day-section {
+    padding-left: 15px;
+  }
+
+  .side-section, .collapsed-container {
+    width: 50px;
+    border-right: 2px solid rgba(54, 69, 79, 0.3);
+  }
+
+  .hamburger-menu.collapsed {
+    padding: 0;
+    width: 52px;
+  }
+
+  .email-svg , .coffee-collapsed, .icons-div {
+    width: 40px;
+    height: 40px;
+  }
+
+  .logo-btn.collapsed {
+    width: 40px;
+    height: 40px;
+    font-size: 30px;
+  }
+
+  .tasks-section, .day-section {
+    padding-left: 55px;
+  }
+
+  .task-container,
+  .main-tasks,
+  .main-tasks-actual {
+    font-size: 15px;
+  }
+
+  .remove-btn {
+    width: 44px;
+    min-height: 36px;
+    font-size: 15px;
+  }
+
+  .check-box-main {
+    height: 15px;
+    width: 15px;
+  }
+
+  .task-remove {
+    margin-top: 12px;
+  }
+
+  .tasks-box p {
+  font-size: 16px;
+  }
+
+  .tasks-box {
+  padding: 40px 15px;
+  }
+
+  .lists {
+  font-size: 12px;
+  padding: 5px;
+}
+
+  .lists-dash {
+    font-size: 12px;
+  }
+
+  .lists-actual {
+    font-size: 11px;
+  }
+
+  .remove-list-btn {
+    width: 20px;
+    font-size: 11px;
+  }
+
+  .your-lists {
+    font-size: 12px;
+  }
+
+  .add-lists {
+    font-size: 12px;
+    padding: 8px;
+  }
+
+  .lists-container {
+    min-height: 0;
+  }
 }

@@ -270,20 +270,6 @@ addListColl.addEventListener('click', function() {
   newListFunc();
 });
 
-logoSec.addEventListener('click',function() {
-  if(sideOut) {
-    sideContain.classList.add("collapsed");
-    logoSec.classList.add("collapsed");
-    hamMenu.classList.add("collapsed");
-    sideOut = false;
-  } else {
-    sideContain.classList.remove("collapsed");
-    logoSec.classList.remove("collapsed");
-    hamMenu.classList.remove("collapsed");
-    sideOut = true;
-  }
-});
-
 function saveAll() {
   localStorage.setItem("todoo", JSON.stringify({
     listId,
@@ -326,3 +312,29 @@ function escapeHTML(text) {
   div.textContent = text;
   return div.innerHTML
 } 
+
+function setSideBar(open) {
+  sideOut = open;
+  sideContain.classList.toggle("collapsed", !open);
+  logoSec.classList.toggle("collapsed", !open);
+  hamMenu.classList.toggle("collapsed", !open);
+}
+
+logoSec.addEventListener('click', function() {
+  setSideBar(!sideOut);
+
+    if(window.innerWidth > 800) {
+      localStorage.setItem("todoo-sidebar", sideOut ? "open" : "closed");
+    }
+});
+
+const isphone = window.innerWidth <= 800;
+const savedSide = localStorage.getItem("todoo-sidebar");
+
+if(isphone) {
+  setSideBar(false);
+} else if(savedSide === "closed") {
+  setSideBar(false);
+} else {
+  setSideBar(true);
+}
